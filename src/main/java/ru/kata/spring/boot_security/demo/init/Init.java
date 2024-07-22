@@ -23,6 +23,6 @@ public class Init {
         roleRepository.save(new Role(1L, "ROLE_ADMIN"));
         roleRepository.save(new Role(2L, "ROLE_USER"));
         userService.save(new User("admin", "admin", "admin", 33, "admin@mail.ru", "123", roleRepository.findAll()));
-        userService.save(new User("user", "user", "user", 25, "user@mail.ru", "456", roleRepository.findById(2L).stream().toList()));
+        userService.save(new User("user", "user1", "user2", 25, "user@mail.ru", "456", roleRepository.findById(2L).stream().toList()));
     }
 }

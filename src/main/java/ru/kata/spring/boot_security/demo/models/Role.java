@@ -1,7 +1,6 @@
 package ru.kata.spring.boot_security.demo.models;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,9 +14,6 @@ public class Role {
 
     @Column(name = "role")
     private String roleName;
-
-    @ManyToMany(mappedBy = "roles")
-    private List<User> users;
 
     public Role() {
     }
@@ -47,12 +43,8 @@ public class Role {
         this.roleName = role;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public String getRoleNameWithoutRole() {
+        return roleName.substring(5);
     }
 
     @Override
@@ -60,12 +52,12 @@ public class Role {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role1 = (Role) o;
-        return Objects.equals(id, role1.id) && Objects.equals(roleName, role1.roleName) && Objects.equals(users, role1.users);
+        return Objects.equals(id, role1.id) && Objects.equals(roleName, role1.roleName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, roleName, users);
+        return Objects.hash(id, roleName);
     }
 
     @Override
